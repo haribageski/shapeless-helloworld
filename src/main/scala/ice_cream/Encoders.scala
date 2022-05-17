@@ -37,6 +37,7 @@ object Encoders {
 
     implicit val hnilEncoder: CsvEncoder[HNil] =
       instance(hnil => Nil)
+
     implicit def hlistEncoder[H, T <: HList](
                                               implicit
                                               hEncoder: CsvEncoder[H],

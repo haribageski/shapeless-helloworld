@@ -25,9 +25,10 @@ object Examples {
 
       // Since we have `implicit` `CsvEncoder[String]`, `CsvEncoder[Int]`, `CsvEncoder[Boolean]`, and `CsvEncoder[HList]`,
       // we can derive `CsvEncoder[String :: Int :: Boolean :: HNil]`, where `String :: Int :: Boolean :: HNil` is
-      // the type HList type of the IceCream, which type alias is `gen.Repr`.
+      // the HList type of the IceCream, which type alias is `gen.Repr`.
       val enc = CsvEncoder[gen.Repr]    // CsvEncoder is a type class
 
+      val x = gen.to(IceCream("", 1, false))
       // `enc.encode()` takes an instance of String :: Int :: Boolean :: HNil, and `gen.to()` gives exactly that instance
       instance(iceCream => enc.encode(gen.to(iceCream)))
     }
